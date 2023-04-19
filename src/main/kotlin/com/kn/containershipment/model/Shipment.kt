@@ -20,7 +20,7 @@ data class Shipment(
 
     val transportType: TransportType? = null,
 
-    val temperatureRange: TemperatureRange? = null
+    val temperature: TemperatureRange? = null
 )
 
 enum class TransportType {
@@ -33,7 +33,8 @@ enum class TransportType {
 @Table
 data class TemperatureRange(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "temperature_range_generator", sequenceName = "temperature_range_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "temperature_range_generator")
     val id: Long = 0,
     val min: Int = 0,
     val max: Int = 0

@@ -25,16 +25,18 @@ class Config {
 
             temperatureRangeRepository.save(temperatureRange)
 
-            val action1 = Action(id = 1, name = "shipment is taken from customer")
-            val action2 = Action(id = 2, name = "shipment is on the way")
-            val action3 = Action(id = 3, name = "shipment is arrived to destination")
-            val action4 = Action(id = 4, name = "shipment is handover to the destination target")
+            val action1 = Action(id = 1, name = "shipment is taken from customer",999)
+            val action2 = Action(id = 2, name = "shipment is on the way",999)
+            val action3 = Action(id = 3, name = "shipment is arrived to destination",999)
+            val action4 = Action(id = 4, name = "shipment is handover to the destination target",999)
 
             actionRepository.saveAll(listOf(action1, action2, action3, action4))
+
 
             val defaultPlanTemplate = PlanTemplate(id = 999, name = "General Shipment Template", actions = listOf(action1, action2, action3, action4), temperatureRange = temperatureRange)
 
             templateRepository.save(defaultPlanTemplate)
+
             templateRepository.findAll().forEach(::print)
         }
     }
