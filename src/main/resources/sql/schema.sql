@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS shipment (
                                               customer_id VARCHAR(255) DEFAULT NULL,
                                               transport_type VARCHAR(255) DEFAULT NULL,
                                               temperature_id BIGINT DEFAULT NULL,
+                                              created_date date,
                                               fragile BOOLEAN DEFAULT FALSE,
                                               notify_customer BOOLEAN DEFAULT FALSE,
                                               CONSTRAINT fk_temperature_id FOREIGN KEY (temperature_id) REFERENCES temperature_range (id)

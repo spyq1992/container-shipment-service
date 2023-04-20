@@ -7,7 +7,6 @@ import com.kn.containershipment.model.Shipment
 import com.kn.containershipment.repository.*
 import com.kn.containershipment.request.ExecutionPlanRequest
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
