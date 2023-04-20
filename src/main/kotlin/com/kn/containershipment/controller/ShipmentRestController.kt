@@ -1,32 +1,27 @@
 package com.kn.containershipment.controller
 
 import com.kn.containershipment.model.ExecutionPlan
-import com.kn.containershipment.model.ExecutionPlanAction
 import com.kn.containershipment.model.PlanTemplate
 import com.kn.containershipment.model.Shipment
 import com.kn.containershipment.repository.*
-import com.kn.containershipment.request.ExecutionPlanRequest
+import com.kn.containershipment.service.ExecutionPlanService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/shipment")
 class ShipmentRestController(
-    @Autowired val shipmentRepository: ShipmentRepository,
-    @Autowired val executionPlanRepository: ExecutionPlanRepository,
-    @Autowired val templateRepository: TemplateRepository,
-    @Autowired val temperatureRangeRepository: TemperatureRangeRepository,
-    @Autowired val executionPlanActionRepository: ExecutionPlanActionRepository
+    @Autowired val executionPlanService: ExecutionPlanService
 ) {
 
     @GetMapping("/shipments")
     fun getShipments(): MutableIterable<Shipment> {
-        return shipmentRepository.findAll()
+        return executionPlanService.getShipments()
     }
 
     @GetMapping("/templates")
     fun getPlanTemplates(): MutableIterable<PlanTemplate> {
-        return templateRepository.findAll()
+        return executionPlanService.getPlanTemplates()
     }
 
 //    @PostMapping("/execution-plans")
@@ -67,6 +62,6 @@ class ShipmentRestController(
 
     @GetMapping("/execution-plans")
     fun getExecutionPlans(): MutableIterable<ExecutionPlan> {
-        return executionPlanRepository.findAll()
+        return executionPlanService.getExecutionPlans()
     }
 }
